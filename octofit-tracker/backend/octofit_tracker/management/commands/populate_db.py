@@ -10,7 +10,6 @@ class Command(BaseCommand):
     help = 'Populate the octofit_db database with test data'
 
     def handle(self, *args, **options):
-        User = get_user_model()
         from django.apps import apps
         db = connection.cursor().db_conn.client[settings.DATABASES['default']['NAME']]
 
