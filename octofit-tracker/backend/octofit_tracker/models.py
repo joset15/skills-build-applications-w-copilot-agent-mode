@@ -1,6 +1,7 @@
 from djongo import models
 
 class User(models.Model):
+    username = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     team = models.CharField(max_length=50)
