@@ -20,17 +20,18 @@ class Command(BaseCommand):
         db.leaderboard.drop()
         db.workouts.drop()
 
-        # Create unique index on email for users
+        # Create unique indexes for users
         db.users.create_index('email', unique=True)
+        db.users.create_index('username', unique=True)
 
         # Insert users (superheroes)
         users = [
-            {"name": "Clark Kent", "email": "superman@dc.com", "team": "dc"},
-            {"name": "Bruce Wayne", "email": "batman@dc.com", "team": "dc"},
-            {"name": "Diana Prince", "email": "wonderwoman@dc.com", "team": "dc"},
-            {"name": "Tony Stark", "email": "ironman@marvel.com", "team": "marvel"},
-            {"name": "Steve Rogers", "email": "captainamerica@marvel.com", "team": "marvel"},
-            {"name": "Natasha Romanoff", "email": "blackwidow@marvel.com", "team": "marvel"},
+            {"username": "superman", "name": "Clark Kent", "email": "superman@dc.com", "team": "dc"},
+            {"username": "batman", "name": "Bruce Wayne", "email": "batman@dc.com", "team": "dc"},
+            {"username": "wonderwoman", "name": "Diana Prince", "email": "wonderwoman@dc.com", "team": "dc"},
+            {"username": "ironman", "name": "Tony Stark", "email": "ironman@marvel.com", "team": "marvel"},
+            {"username": "captainamerica", "name": "Steve Rogers", "email": "captainamerica@marvel.com", "team": "marvel"},
+            {"username": "blackwidow", "name": "Natasha Romanoff", "email": "blackwidow@marvel.com", "team": "marvel"},
         ]
         db.users.insert_many(users)
 
